@@ -8,7 +8,7 @@ requires = [
     'jsonrpclib',
     'python-bitcoinrpc==0.1',
     'appdirs==1.4.3',
-    'lbryschema==0.0.15rc2',
+    'lbryschema==0.0.15rc3',
     'beaker==1.9.0',
     'twisted==16.6.0'
 ]
