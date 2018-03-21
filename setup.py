@@ -11,7 +11,10 @@ requires = [
     'lbryschema==0.0.15rc2',
     'beaker==1.9.0',
     'msgpack==0.5.6',
-    'twisted==16.6.0'
+    'twisted',
+    'service_identity',
+    'pyasn1',
+    'pyasn1-modules'
 ]
 
 if sys.platform == "darwin":

@@ -935,6 +935,22 @@ class BlockchainProcessor(BlockchainSubscriptionProcessor):
             result = self.get_header(height)
         return result
 
+    MAX_CHUNK_SIZE = 20
+
+    @command('blockchain.block.headers')
+    def cmd_block_headers(self, height, count):
+        height, count = int(height), int(count)
+        total_height = os.path.getsize(self.headers_filename) / HEADER_SIZE - 1
+        count = max(0, min(count, self.MAX_CHUNK_SIZE, total_height - height))
+        with open(self.headers_filename, 'rb') as f:
+            f.seek(height * HEADER_SIZE)
+            chunk = f.read(count * HEADER_SIZE)
+        return {
+            'hex': chunk.encode('hex'),
+            'count': count,
+            'max': self.MAX_CHUNK_SIZE
+        }
+
     @command('blockchain.block.get_chunk')
     def cmd_block_get_chunk(self, index, cache_only=False):
         index = int(index)
