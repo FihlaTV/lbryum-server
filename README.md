@@ -1,3 +1,5 @@
+**This project is deprecated. Use https://github.com/lbryio/lbryumx instead.**
+
 Electrum-server for the Electrum client
 =========================================
 
